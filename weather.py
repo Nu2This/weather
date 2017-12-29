@@ -16,7 +16,12 @@ def extended_forecast():
 
         for x in three_day:
             print(' '+'-'*5)
-            print('| {0:4}|'.format(x['date']['weekday_short']))
+            print('| {0:4} Temp Cond Wind '.format(x['date']['weekday_short']))
+            print('|' + ' '*5 + '{0:2} - {0:2}'*3''.format(x['low']['fahrenheit'],
+                                                    x['high']['fahrenheit'],
+                                                    x['conditions'],
+                                                    x['avewind']['mph'],
+                                                    x['maxwind']['mph']))
 
 if __name__ == '__main__':
     extended_forecast()
