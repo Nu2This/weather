@@ -27,7 +27,7 @@ def radar():
     # Download gif to open
     with open('radar.gif', 'wb') as f:
         f.write(requests.get(r).content)
-    webbrowser.open('/home/mheide/Documents/python/weather/radar.gif')
+    webbrowser.get('firefox').open('/home/mheide/Documents/python/weather/radar.gif')
     return
 
 if __name__ == '__main__':
