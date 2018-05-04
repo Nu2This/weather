@@ -1,7 +1,7 @@
 import json
 import argparse
 import requests
-from tkinter import *
+import webbrowser
 
 
 def forecast(days):
@@ -27,18 +27,16 @@ def radar():
     # Download gif to open
     with open('radar.gif', 'wb') as f:
         f.write(requests.get(r).content)
-    # Display Gif
-    # Create canvas
-    canvas = Canvas(width = 800, height = 800, bg = 'grey')
-    # Load gif
-    rgif = PhotoImage(file='/home/mheide/Documents/python/weather/radar.gif')
-    # Put gif on canvas
-    canvas.create_image(50, 10, image = rgif, anchor = NW)
+    webbrowser.open('/home/mheide/Documents/python/weather/radar.gif')
+    return
 
 if __name__ == '__main__':
-    radar()
     parser = argparse.ArgumentParser()
     parser.add_argument('days', help="Number of days to look at", nargs = '?', const = 3, type = int,default=3)
+    parser.add_argument('--radar', help="Display Radar", action = 'store_true')
     args = parser.parse_args()
 
-    forecast(args.days)
+    if args.radar:
+        radar()
+    else:
+        forecast(args.days)
