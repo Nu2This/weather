@@ -30,8 +30,7 @@ def radar():
     # Download gif to open
     with open('radar.gif', 'wb') as f:
         f.write(requests.get(r).content)
-    webbrowser.get('firefox').open('/home/mheide/Documents/'
-                                   'python/weather/radar.gif')
+    webbrowser.get('firefox').open_new_tab('radar.gif')
     return
 
 
@@ -39,7 +38,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('days', help="Number of days to look at",
                         nargs='?', const=3, type=int, default=3)
-    parser.add_argument('--radar', help="Display Radar", action='store_true')
+    parser.add_argument('-radar', help="Display Radar", action='store_true')
     args = parser.parse_args()
     if args.radar:
         radar()
